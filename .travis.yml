@@ -1,0 +1,12 @@
+language: c
+sudo: required
+before_install:
+  - sudo apt-get install gfortran
+
+script:
+  - gfortran utility.f90 test_utility.f90 -o test_utility
+  - ./test_utility < test_utility.dat
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
